@@ -134,3 +134,10 @@ Enunciarlas es parte del planteo, no un descargo.
   mitiga con validación estricta y auto-reparación, no se resuelve.
 - **Sin pagos, el incentivo del proveedor es externo al sistema.** La reputación funciona
   como moneda dentro de la plataforma, pero la motivación real queda fuera del alcance.
+
+---
+
+**Uso de IA y autoría.** Este documento se elaboró con asistencia de Claude (Anthropic,
+modelo `claude-opus-5`). Las decisiones de diseño, la revisión y la verificación son de los
+autores, que asumen la responsabilidad sobre su contenido. Constancia formal en
+[`11-declaracion-de-uso-de-ia.md`](11-declaracion-de-uso-de-ia.md).

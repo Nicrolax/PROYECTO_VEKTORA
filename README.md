@@ -300,3 +300,12 @@ casos de uso, la infraestructura y la guía de despliegue. Empezar por
 
 La documentación técnica de cada fase —decisiones de diseño, errores encontrados y cómo se
 corrigieron— vive en el espacio de trabajo del proyecto.
+
+---
+
+**Uso de IA y autoría.** Este proyecto se desarrolló con asistencia de Claude (Anthropic,
+modelo `claude-opus-5`). El sistema, además, utiliza modelos de lenguaje como componente
+propio (Groq `openai/gpt-oss-120b` con respaldo en Google `gemini-3.6-flash`). Las decisiones
+de diseño, la revisión y la verificación son de los autores, que asumen la responsabilidad
+sobre el contenido. Constancia formal en
+[`docs/11-declaracion-de-uso-de-ia.md`](docs/11-declaracion-de-uso-de-ia.md).

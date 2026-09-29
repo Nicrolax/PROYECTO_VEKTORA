@@ -63,3 +63,10 @@ Cada tecnología va acompañada del motivo concreto por el que se eligió. Fuent
 Toda tecnología de esta lista aparece en `package.json` o en la configuración de despliegue
 del repositorio entregado. `08-estado-de-implementacion.md` registra en qué fase se incorpora
 cada una y el estado de verificación de esa fase.
+
+---
+
+**Uso de IA y autoría.** Este documento se elaboró con asistencia de Claude (Anthropic,
+modelo `claude-opus-5`). Las decisiones de diseño, la revisión y la verificación son de los
+autores, que asumen la responsabilidad sobre su contenido. Constancia formal en
+[`11-declaracion-de-uso-de-ia.md`](11-declaracion-de-uso-de-ia.md).

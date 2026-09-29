@@ -104,3 +104,10 @@ cuerda a mano. Es el mismo código, solo que ejecutado por nosotros en vez de po
   uno.
 - **La documentación completa está en `docs/`**, del 01 al 09: teoría, requisitos, diagramas
   de clases, casos de uso, infraestructura y despliegue.
+
+---
+
+**Uso de IA y autoría.** Este documento se elaboró con asistencia de Claude (Anthropic,
+modelo `claude-opus-5`). Las decisiones de diseño, la revisión y la verificación son de los
+autores, que asumen la responsabilidad sobre su contenido. Constancia formal en
+[`11-declaracion-de-uso-de-ia.md`](11-declaracion-de-uso-de-ia.md).

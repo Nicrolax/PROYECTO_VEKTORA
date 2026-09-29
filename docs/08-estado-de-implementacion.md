@@ -60,3 +60,10 @@ npm run ai:models   # los modelos configurados siguen existiendo
 
 Los cuatro tienen que pasar. El último importa más de lo que parece: los modelos se retiran, y
 uno retirado convierte una demostración en vivo en un error 404.
+
+---
+
+**Uso de IA y autoría.** Este documento se elaboró con asistencia de Claude (Anthropic,
+modelo `claude-opus-5`). Las decisiones de diseño, la revisión y la verificación son de los
+autores, que asumen la responsabilidad sobre su contenido. Constancia formal en
+[`11-declaracion-de-uso-de-ia.md`](11-declaracion-de-uso-de-ia.md).

@@ -138,3 +138,10 @@ tier de todas las demás. Por defecto: 5 proyectos, 10 altas de proveedor y 30 e
 | Los trabajos devuelven 401 | El secreto no coincide | Igualar el de Vercel y el de `.env.local` |
 | Una tarea no se adjudica nunca | Ningún candidato supera el umbral | Se resuelve sola tras 4 rondas; ver la escalada |
 | Planificar da tiempo agotado | Límite de duración de función | Comprobar `maxDuration = 60` en la página |
+
+---
+
+**Uso de IA y autoría.** Este documento se elaboró con asistencia de Claude (Anthropic,
+modelo `claude-opus-5`). Las decisiones de diseño, la revisión y la verificación son de los
+autores, que asumen la responsabilidad sobre su contenido. Constancia formal en
+[`11-declaracion-de-uso-de-ia.md`](11-declaracion-de-uso-de-ia.md).

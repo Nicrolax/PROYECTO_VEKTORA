@@ -114,3 +114,10 @@ flowchart LR
 Las funciones SQL se verifican por comportamiento sobre una base local que se crea y se
 destruye en cada corrida, **antes** de aplicarse en Supabase. Esa práctica nació de un
 incidente real: dos guiones que parecían correctos a la vista fallaron al ejecutarse.
+
+---
+
+**Uso de IA y autoría.** Este documento se elaboró con asistencia de Claude (Anthropic,
+modelo `claude-opus-5`). Las decisiones de diseño, la revisión y la verificación son de los
+autores, que asumen la responsabilidad sobre su contenido. Constancia formal en
+[`11-declaracion-de-uso-de-ia.md`](11-declaracion-de-uso-de-ia.md).

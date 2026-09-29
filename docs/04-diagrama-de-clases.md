@@ -443,3 +443,10 @@ classDiagram
 - **`TaskDependency`** es la tabla de asociación que forma el DAG. Un trigger
   (`prevent_dag_cycles`) impide insertar una arista que cierre un ciclo, incluso si el código
   de aplicación fallara.
+
+---
+
+**Uso de IA y autoría.** Este documento se elaboró con asistencia de Claude (Anthropic,
+modelo `claude-opus-5`). Las decisiones de diseño, la revisión y la verificación son de los
+autores, que asumen la responsabilidad sobre su contenido. Constancia formal en
+[`11-declaracion-de-uso-de-ia.md`](11-declaracion-de-uso-de-ia.md).

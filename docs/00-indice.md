@@ -36,10 +36,18 @@ Nadie aprueba nada por el camino.
 | Archivo | Para qué |
 |---|---|
 | [`07-repositorio-y-auditoria.md`](07-repositorio-y-auditoria.md) | Preparación del repositorio y del análisis estático |
+| [`08-estado-de-implementacion.md`](08-estado-de-implementacion.md) | Estado de las siete fases, puesta en marcha y guion de demostración |
 | [`09-despliegue.md`](09-despliegue.md) | Puesta en producción en Supabase y Vercel, paso a paso |
 | [`10-guia-para-el-equipo.md`](10-guia-para-el-equipo.md) | **Cómo funciona el proyecto en palabras simples.** Para quien no escribió el código |
-| [`08-estado-de-implementacion.md`](08-estado-de-implementacion.md) | Estado de las siete fases, puesta en marcha y guion de demostración |
+| [`11-declaracion-de-uso-de-ia.md`](11-declaracion-de-uso-de-ia.md) | **Declaración formal de uso de IA y de autoría.** Modelos empleados y alcance de lo declarado |
 
 La documentación técnica detallada de cada fase de desarrollo —decisiones de diseño, errores
 encontrados y cómo se corrigieron— vive fuera de esta carpeta, en el espacio de trabajo del
 proyecto.
+
+---
+
+**Uso de IA y autoría.** Este documento se elaboró con asistencia de Claude (Anthropic,
+modelo `claude-opus-5`). Las decisiones de diseño, la revisión y la verificación son de los
+autores, que asumen la responsabilidad sobre su contenido. Constancia formal en
+[`11-declaracion-de-uso-de-ia.md`](11-declaracion-de-uso-de-ia.md).

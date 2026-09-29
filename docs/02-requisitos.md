@@ -150,3 +150,10 @@ sistema** e indica cómo se demuestra. Los no funcionales llevan criterio medibl
 | RNF-4.6 | El despliegue se puede verificar antes de operar | Comprobaciones de base de datos y de capa de IA |
 | RNF-4.7 | Los guiones SQL son idempotentes y reaplicables sin destruir datos | Verificado reaplicando cada migración |
 | RNF-4.8 | Toda llamada a un modelo queda registrada con operación, proveedor, estado, tokens y coste | Tabla de corridas de IA |
+
+---
+
+**Uso de IA y autoría.** Este documento se elaboró con asistencia de Claude (Anthropic,
+modelo `claude-opus-5`). Las decisiones de diseño, la revisión y la verificación son de los
+autores, que asumen la responsabilidad sobre su contenido. Constancia formal en
+[`11-declaracion-de-uso-de-ia.md`](11-declaracion-de-uso-de-ia.md).

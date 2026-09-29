@@ -277,3 +277,10 @@ secundarios:** Proveedores de IA
 **Flujos alternativos**
 - *2a. El proyecto pertenece a otro usuario:* las políticas de acceso lo impiden y el sistema
   responde como si no existiera.
+
+---
+
+**Uso de IA y autoría.** Este documento se elaboró con asistencia de Claude (Anthropic,
+modelo `claude-opus-5`). Las decisiones de diseño, la revisión y la verificación son de los
+autores, que asumen la responsabilidad sobre su contenido. Constancia formal en
+[`11-declaracion-de-uso-de-ia.md`](11-declaracion-de-uso-de-ia.md).
