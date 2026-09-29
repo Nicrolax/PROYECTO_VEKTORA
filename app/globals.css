@@ -1,0 +1,321 @@
+@import 'tailwindcss';
+
+/*
+ * VEKTORA · FASE 6 — Sistema visual.
+ *
+ * Dos reglas gobiernan todo:
+ *
+ *   1. EL COLOR DE ESTADO ES UN DATO. Verde, ámbar, naranja y rojo significan en qué punto
+ *      está una tarea. Por eso el color de MARCA es violeta-magenta: no compite con ninguno
+ *      de ellos. Si el acento fuese azul o verde, el grafo dejaría de leerse de un vistazo.
+ *
+ *   2. EL MOVIMIENTO ORIENTA, NO DECORA. Nada dura más de 260 ms, todo entra desde donde
+ *      tiene sentido, y con `prefers-reduced-motion` desaparece por completo. Una animación
+ *      que te hace esperar es peor que ninguna.
+ */
+
+@theme {
+  /* --- Superficies: cinco escalones de profundidad, no más --------------------------- */
+  --color-lienzo: oklch(0.125 0.018 275);
+  --color-lienzo-alto: oklch(0.155 0.02 275);
+  --color-panel: oklch(0.185 0.022 275);
+  --color-panel-alto: oklch(0.225 0.024 275);
+  --color-borde: oklch(0.3 0.026 275);
+  --color-borde-vivo: oklch(0.42 0.04 275);
+
+  /* --- Texto ------------------------------------------------------------------------- */
+  --color-texto: oklch(0.975 0.004 275);
+  --color-tenue: oklch(0.76 0.016 275);
+  --color-apagado: oklch(0.58 0.02 275);
+
+  /* --- Marca: violeta -> magenta. Deliberadamente fuera de la gama de los estados ----- */
+  --color-acento: oklch(0.68 0.21 295);
+  --color-acento-claro: oklch(0.76 0.19 300);
+  --color-acento-fin: oklch(0.7 0.24 345);
+  --color-acento-tenue: oklch(0.38 0.11 295);
+
+  /* --- Estados de tarea: el color ES el dato ------------------------------------------ */
+  --color-bloqueada: oklch(0.56 0.022 275);
+  --color-lista: oklch(0.78 0.15 225);
+  --color-emparejando: oklch(0.76 0.13 265);
+  --color-asignada: oklch(0.82 0.15 95);
+  --color-entregada: oklch(0.79 0.15 65);
+  --color-aprobada: oklch(0.78 0.18 155);
+  --color-revision: oklch(0.79 0.17 48);
+  --color-fallida: oklch(0.68 0.21 22);
+
+  /*
+   * Pila del sistema, no una tipografía descargada. `next/font` la bajaría en cada
+   * compilación, y una demo que depende de que Google responda es una demo que puede
+   * fallar sin conexión. Cada sistema aporta la suya, que además ya está en caché:
+   * SF Pro en Apple, Segoe UI Variable en Windows 11, Inter si el equipo la tiene.
+   */
+  --font-sans:
+    'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI Variable Display',
+    'Segoe UI', Inter, Roboto, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'JetBrains Mono', monospace;
+
+  /* Una sola curva para todo. La coherencia del movimiento es lo que lo vuelve invisible. */
+  --ease-suave: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-borde);
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-lienzo);
+    color: var(--color-texto);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Títulos con tracking negativo: a tamaños grandes, el espaciado por defecto se ve suelto. */
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.022em;
+  }
+
+  /* El foco SIEMPRE visible. Es el requisito de accesibilidad por teclado. */
+  :focus-visible {
+    outline: 2px solid var(--color-acento-claro);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklch, var(--color-acento) 35%, transparent);
+  }
+
+  /* Barra de desplazamiento discreta: la del sistema rompe la paleta en Windows. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-borde);
+    border-radius: 99px;
+    border: 3px solid var(--color-lienzo);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-borde-vivo);
+  }
+}
+
+@layer utilities {
+  /* --- Movimiento --------------------------------------------------------------------- */
+  @keyframes entrar {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes aparecer {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes respirar {
+    0%,
+    100% {
+      opacity: 0.45;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes recorrer {
+    from {
+      transform: translateX(-120%);
+    }
+    to {
+      transform: translateX(420%);
+    }
+  }
+
+  @keyframes deriva {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(2%, -3%, 0) scale(1.08);
+    }
+  }
+
+  .entra {
+    animation: entrar 0.42s var(--ease-suave) both;
+  }
+
+  .aparece {
+    animation: aparecer 0.5s var(--ease-suave) both;
+  }
+
+  /* --- Superficies -------------------------------------------------------------------- */
+
+  /* Tarjeta que reacciona al cursor: sube 2 px y el borde cobra vida. Nada más. */
+  .tarjeta {
+    background-color: var(--color-panel);
+    border: 1px solid var(--color-borde);
+    border-radius: 14px;
+    transition:
+      transform 0.22s var(--ease-suave),
+      border-color 0.22s var(--ease-suave),
+      box-shadow 0.22s var(--ease-suave);
+  }
+
+  .tarjeta-viva:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in oklch, var(--color-acento) 45%, var(--color-borde));
+    box-shadow:
+      0 1px 0 0 color-mix(in oklch, var(--color-acento) 18%, transparent) inset,
+      0 12px 32px -12px oklch(0 0 0 / 0.55);
+  }
+
+  /* --- Marca --------------------------------------------------------------------------- */
+  .degradado-marca {
+    background-image: linear-gradient(
+      100deg,
+      var(--color-acento) 0%,
+      var(--color-acento-claro) 45%,
+      var(--color-acento-fin) 100%
+    );
+  }
+
+  .texto-marca {
+    background-image: linear-gradient(
+      100deg,
+      var(--color-acento-claro) 0%,
+      var(--color-acento) 40%,
+      var(--color-acento-fin) 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  /* Halo de fondo. Da profundidad sin imágenes, que pesan y hay que mantener. */
+  .halo {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(110px);
+    pointer-events: none;
+    animation: deriva 14s ease-in-out infinite;
+  }
+
+  /* --- Botones ------------------------------------------------------------------------- */
+  .boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 11px;
+    padding: 0.7rem 1.15rem;
+    font-size: 0.875rem;
+    font-weight: 550;
+    white-space: nowrap;
+    transition:
+      transform 0.16s var(--ease-suave),
+      filter 0.16s var(--ease-suave),
+      background-color 0.16s var(--ease-suave),
+      border-color 0.16s var(--ease-suave);
+  }
+
+  .boton:active:not(:disabled) {
+    transform: scale(0.975);
+  }
+
+  .boton:disabled {
+    opacity: 0.55;
+    cursor: progress;
+  }
+
+  .boton-primario {
+    color: oklch(0.14 0.02 275);
+    border: none;
+  }
+
+  .boton-primario:hover:not(:disabled) {
+    filter: brightness(1.1) saturate(1.05);
+  }
+
+  .boton-suave {
+    background-color: transparent;
+    border: 1px solid var(--color-borde);
+    color: var(--color-tenue);
+  }
+
+  .boton-suave:hover:not(:disabled) {
+    background-color: var(--color-panel-alto);
+    border-color: var(--color-borde-vivo);
+    color: var(--color-texto);
+  }
+
+  /* --- Campos --------------------------------------------------------------------------- */
+  .campo {
+    width: 100%;
+    border-radius: 11px;
+    border: 1px solid var(--color-borde);
+    background-color: var(--color-lienzo-alto);
+    padding: 0.7rem 0.9rem;
+    font-size: 0.875rem;
+    transition:
+      border-color 0.18s var(--ease-suave),
+      background-color 0.18s var(--ease-suave);
+  }
+
+  .campo::placeholder {
+    color: var(--color-apagado);
+  }
+
+  .campo:hover {
+    border-color: var(--color-borde-vivo);
+  }
+
+  .campo:focus {
+    outline: none;
+    border-color: var(--color-acento);
+    background-color: var(--color-panel);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-acento) 16%, transparent);
+  }
+}
+
+/* Quien pidió menos movimiento recibe CERO movimiento, no menos movimiento. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .tarjeta-viva:hover {
+    transform: none;
+  }
+}

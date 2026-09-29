@@ -1,0 +1,50 @@
+{
+  "name": "vektora",
+  "version": "0.3.0",
+  "private": true,
+  "description": "VEKTORA — plataforma autónoma de resultados: planificación por DAG, matching híbrido y verificación por reputación de evidencia.",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "ai:check": "tsx scripts/ai-check.ts",
+    "ai:models": "tsx scripts/ai-models.ts",
+    "db:check": "tsx scripts/db-check.ts",
+    "skills:embed": "tsx scripts/skills-embed.ts",
+    "skills:calibrate": "tsx scripts/skills-calibrate.ts",
+    "provider:add": "tsx scripts/provider-add.ts",
+    "provider:seed": "tsx scripts/provider-seed.ts",
+    "match": "tsx scripts/match-task.ts",
+    "qa": "tsx scripts/qa-review.ts",
+    "cron": "tsx scripts/cron-local.ts",
+    "deliver": "tsx scripts/deliverable-submit.ts",
+    "plan": "tsx scripts/plan-project.ts",
+    "verify": "npm run typecheck && npm run test"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.116.0",
+    "dotenv": "^17.4.2",
+    "next": "^16.3.5",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "zod": "^4.6.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^22.20.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.0"
+  }
+}

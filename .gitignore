@@ -1,0 +1,41 @@
+# --- Dependencias -------------------------------------------------------------------
+node_modules/
+.pnp
+.pnp.js
+
+# --- Entorno: NUNCA se versiona ------------------------------------------------------
+# .env.local contiene SUPABASE_SERVICE_ROLE_KEY, que bypassea RLS. env.example sí se sube.
+.env
+.env.local
+.env.*.local
+!env.example
+
+# Perfiles de proveedor para `npm run provider:add`: llevan datos personales reales.
+perfil.json
+perfil-*.json
+
+# --- Build y caché -------------------------------------------------------------------
+.next/
+out/
+dist/
+build/
+*.tsbuildinfo
+.turbo/
+.vercel/
+
+# --- Pruebas -------------------------------------------------------------------------
+coverage/
+.vitest/
+
+# --- Sistema y editores --------------------------------------------------------------
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# --- Capturas y salidas de la sesión de desarrollo -----------------------------------
+# Capturas usadas para revisar la interfaz. No son parte del proyecto entregable.
+Claude outputs/

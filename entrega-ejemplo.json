@@ -1,0 +1,11 @@
+{
+  "summary": "Documento de requisitos y alcance del micrositio de captación, con objetivos medibles, exclusiones explícitas y criterios de aceptación por entregable.",
+  "content": "# Requisitos y alcance\n\n## 1. Objetivos medibles\n- Captar 200 leads cualificados en los primeros 90 días.\n- Tasa de conversión del formulario >= 8% sobre visitas únicas.\n- Tiempo de carga (LCP) por debajo de 2,0 s en 4G.\n\n## 2. Alcance incluido\n- Micrositio de una sola página con formulario de captación.\n- Integración de analítica con eventos de envío y de error.\n- Textos en español rioplatense.\n\n## 3. Fuera de alcance\n- Integración con CRM: se entrega el webhook, no la conexión.\n- Versiones en otros idiomas.\n- Campañas de pago y su gestión.\n\n## 4. Supuestos\n- El cliente aporta identidad visual y dominio.\n",
+  "artifacts": [
+    { "type": "url", "url": "https://ejemplo.invalid/alcance.pdf", "label": "Documento en PDF" }
+  ],
+  "evidence": {
+    "AC-1": "Sección 1 del contenido: tres objetivos con métrica y umbral numérico.",
+    "AC-2": "Sección 3 del contenido: lista explícita de lo que queda fuera de alcance."
+  }
+}
