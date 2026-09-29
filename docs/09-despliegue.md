@@ -48,18 +48,30 @@ a las *Redirect URLs*. Sin eso, el enlace de confirmación devuelve a `localhost
 Los trabajos programados se configuran solos desde `vercel.json`, que ya está en el
 repositorio:
 
-| Trabajo | Cada | Qué hace |
+| Trabajo | Cuándo | Qué hace |
 |---|---|---|
-| `/api/cron/emparejar` | 15 min | Adjudica las tareas disponibles |
-| `/api/cron/evaluar` | 10 min | Juzga los entregables en cola |
+| `/api/cron/emparejar` | 09:00 UTC | Adjudica las tareas disponibles |
+| `/api/cron/evaluar` | 09:30 UTC | Juzga los entregables en cola |
 
 **Esos dos relojes son lo que hace autónomo al sistema.** Sin ellos, una tarea que queda
 lista espera a que alguien ejecute algo, y eso es intervención humana aunque se llame
 «pulsar un botón». En desarrollo se suplen con `npm run cron`.
 
-> El plan gratuito de Vercel limita la frecuencia de los trabajos programados. Si el
-> despliegue los rechaza, bajar a una vez al día en `vercel.json` y usar `npm run cron`
-> para la demostración.
+### Por qué una vez al día y no cada quince minutos
+
+El plan gratuito de Vercel admite **una sola ejecución diaria por trabajo programado**. Un
+`vercel.json` que pida `*/15 * * * *` no es que corra despacio: el despliegue entero se
+rechaza con «Hobby accounts are limited to daily cron jobs».
+
+La frecuencia es una restricción del plan, no del diseño. Lo que hace autónomo al sistema es
+que **nadie decide**, no cada cuánto corre el reloj: el emparejador elige proveedor y el
+evaluador cierra tareas sin que intervenga una persona, den la vuelta cada diez minutos o una
+vez al día. Por eso también la escalada se cuenta en RONDAS y no en horas (ver
+`lib/matching/config.ts`): con el reloj diario, cuatro rondas serían cuatro días, y así puede
+demostrarse ejecutando `npm run cron` cuatro veces seguidas.
+
+Para una demostración en vivo, `npm run cron` dispara los mismos endpoints HTTP con el mismo
+secreto. No simula nada: es el mismo código que ejecuta el reloj.
 
 ## 3. Variables de entorno
 
